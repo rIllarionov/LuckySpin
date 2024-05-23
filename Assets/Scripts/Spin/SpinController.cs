@@ -13,6 +13,7 @@ public class SpinController : MonoBehaviour
     [SerializeField] private TokenWallet _tokenWallet;
     [SerializeField] private Button _spinButton;
     [SerializeField] private ChestController _chestController;
+    [SerializeField] private ParticleSystem _particleSystem;
     
     private Rigidbody2D _rigidbody2D;
 
@@ -57,6 +58,7 @@ public class SpinController : MonoBehaviour
         if (_startSpin)
         {
             IsSpin();
+            _particleSystem.Play();
         }
 
         if (_startSpin && _finishSpin)
@@ -65,6 +67,7 @@ public class SpinController : MonoBehaviour
             
             _startSpin = false;
             _finishSpin = false;
+            _particleSystem.Stop();
         }
     }
 
