@@ -8,7 +8,7 @@ public class PrizeDetector : MonoBehaviour
 {
     [SerializeField] private SpinController spinController;
     [SerializeField] private RewardManager _rewardManager;
-    
+
     private GameObject _gameObject;
 
     private void Start()
@@ -19,6 +19,12 @@ public class PrizeDetector : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         _gameObject = other.gameObject;
+        var audioSource = _gameObject.GetComponent<AudioSource>();
+
+        if (audioSource != null)
+        {
+            audioSource.Play();
+        }
     }
 
     private void OpenPrize()

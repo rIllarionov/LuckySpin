@@ -14,7 +14,7 @@ public class SpinController : MonoBehaviour
     [SerializeField] private Button _spinButton;
     [SerializeField] private ChestController _chestController;
     [SerializeField] private ParticleSystem _particleSystem;
-    
+
     private Rigidbody2D _rigidbody2D;
 
     private bool _startSpin;
@@ -29,6 +29,7 @@ public class SpinController : MonoBehaviour
             _rigidbody2D.AddTorque(speed,ForceMode2D.Impulse);
         
             _startSpin = true;
+            _particleSystem.Play();
         }
         
     }
@@ -58,7 +59,6 @@ public class SpinController : MonoBehaviour
         if (_startSpin)
         {
             IsSpin();
-            _particleSystem.Play();
         }
 
         if (_startSpin && _finishSpin)

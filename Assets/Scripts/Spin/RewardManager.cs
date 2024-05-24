@@ -18,6 +18,8 @@ public class RewardManager : MonoBehaviour
     [SerializeField] private ItemSettings _crystalItem;
     [SerializeField] private ItemSettings _mysteryItem;
     [SerializeField] private ItemSettings _skullItem;
+    [SerializeField] private AudioSource _fail;
+    [SerializeField] private AudioSource _win;
     
     public void Initialize (String itemName)
     {
@@ -25,9 +27,11 @@ public class RewardManager : MonoBehaviour
         {
             
             Instantiate(_skullAnimtaion, _parent, false);
+            _fail.Play();
             return;
         }
         
+        _win.Play();
         var currentObject = Instantiate(_rewardAnimationPrefab, _parent, false);
         var rewardInitializer = currentObject.GetComponent<RewardInitializer>();
 
